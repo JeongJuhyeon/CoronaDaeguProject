@@ -29,7 +29,7 @@ print(df.tail())
 df.to_csv("data/metro_data_monthly_199701_202004.csv", encoding="utf-8")
 df_part1 = df[['year', 'month', 'total']].rename(columns={"total": "passengers"})
 df_part1["percent_change"] = df_part1["passengers"].pct_change(periods=12).round(6) * 100
-df_part1["passengers_last_year"] = df_part1["passengers"].shift(periods=12, fill_value=-1).astype("int64")
+df_part1["passengers_last_year"] = df_part1["passengers"].days_shift(periods=12, fill_value=-1).astype("int64")
 # df_part1["passengers_last_year"] = df_part1["passengers"].shift(periods=12)
 
 
